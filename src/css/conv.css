@@ -2,22 +2,23 @@ body{
     display: block;
 }
 
-
 .conv-questions{
     display: none;
     flex-direction: column;
-    justify-content: center;
-    /* align-items: center;       */
+    justify-content: center;    
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     background-color: #fff;
-    z-index: 999;    
+    z-index: 9999;    
     display: none;
-    border: 1px solid #000;
+    border: 1px solid #eee;
     padding: 0 8%;
+}
+.selectr-options-container{
+    position: static !important;
 }
 .conv-questions .conv-close{
     position: absolute;
@@ -26,9 +27,11 @@ body{
     border: 1px solid #000;
     border-radius: 100%;
     min-height: 30px;
-    min-width: 30px;    
+    min-width: 30px;
+    line-height: 30px;
     padding: 0;
     background-color: transparent;
+    text-align: center;
 }
 
 .conv-questions.small{    
@@ -38,8 +41,8 @@ body{
     right: 20%;   
 }
 .conv-questions.medium{
-    top: 8%;
-    bottom: 8%;
+    top: 20%;
+    bottom: 20%;
     left: 8%;
     right: 8%;
 }
@@ -50,30 +53,33 @@ body{
     height: 0;
     overflow: hidden;
 }
+.selectr-selected .selectr-tag-remove {
+    right: 2px;
+}
+.selectr-selected{
+       min-height: 41px;
+    font-size: 1.2rem;
+}
+.selectr-tag {
+    position: relative;
+    float: left;
+    margin: 0 5px 2px 0;
+    cursor: default;
+    color: #fff;
+    border: none;
+    border-radius: 22px;
+    background: #000000;
+    padding: 5px 25px 5px 15px !important;
+}
+
+.selectr-container.multiple.has-selected .selectr-selected {
+    padding: 10px;
+}
+/* .conv-questions .conv-footer{    
+} */
 
 .conv-questions .question.active{
     opacity: 1;
     height: auto;
     margin-bottom: 20px;
-}
-.conv-questions .question label{
-    font-size: 54px;
-    font-weight: 700;    
-    display: block;
-}
-
-.conv-questions .question .caption{
-    font-size: 14px;
-    display: block;
-    font-weight: 300;    
-    color:#a5a0a0;
-    margin-bottom: 5px;
-}
-
-.conv-questions .question input[type=text] {
-    height: 31px;
-    width: 95%;
-    font-size: 16px;
-    padding: 9px;
-    width: -webkit-fill-available;    
 }

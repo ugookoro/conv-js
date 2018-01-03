@@ -13,59 +13,90 @@
     <meta lang="en">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="src/css/selectr.min.css">
     <link rel="stylesheet" href="src/css/conv.css">
+    <link rel="stylesheet" href="src/css/theme.css">
+    
 </head>
 
 <body>
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+
     <button data-conv-target="#first">Open First Form</button>
 
-    <button data-conv-target="#second">Open First Form</button>
-    
+    <button data-conv-target="#second">Open Second Form</button>
 
-    <div class="conv-questions small" id="first">
-        <button class="conv-close" data-conv-close="#first">X</button>
+
+    <form class="conv-questions small" id="first" action="http://muster.ng" method="get">
+        <span class="conv-close" data-conv-close="#first">X</span>
         <div class="question">
             <label for=""> Hello! I'm the first ?</label>
             <span class="caption">Don't worry we are not going to enslave you.</span>
-            <input type="text">
+            <input type="text" name="test">
         </div>
-        <div class="question">
+        <div class="question" data-conv-validate="required">
             <label for=""> Hey Second ?</label>
             <span class="caption">Don't worry we are not going to enslave you.</span>
-            <input type="text">
+            <select class="state-with-all" name="State" id="State" required="" multiple>                
+        </select>
         </div>
         <div class="question">
-            <label for=""> Hello! Third ?</label>
+            <label for=""> Hello! <span  data-conv-place="firstname"></span> Third ?</label>
+            <span class="caption">Don't worry we are not going to enslave you.</span>
+            <div class="conv-radio">
+                <input type="radio" name="test" id="test1" checked>
+                <label for="test1">Hello</label>
+            </div>
+            <div class="conv-radio">
+                <input type="radio" name="test" id="test2">
+                <label for="test2">Hello</label>
+            </div>
+            <div class="conv-radio">
+                <input type="radio" name="test" id="test3">
+                <label for="test3">Hello</label>
+            </div>
+        </div>
+
+        <div class="conv-footer">
+            <button type="button" class="conv-back">Go Back</button>
+            <button type="button" class="conv-next">Foward</button>
+        </div>
+    </form>
+
+    <div class="conv-questions medium" id="second">
+        <button class="conv-close" data-conv-close="#second">X</button>
+        <div class="question">
+            <label for=""> Hello! I'm the second ?</label>
             <span class="caption">Don't worry we are not going to enslave you.</span>
             <input type="text">
         </div>
-
-        <div>
-            <button class="conv-back">Go Back</button>
-            <button class="conv-next">Foward</button>
+        <div class="question">
+            <label for=""> Hello! whats your name ?</label>
+            <span class="caption">Don't worry we are not going to enslave you.</span>
+            <input type="text">
+        </div>
+        <div class="conv-footer">
+            <button type="button" class="conv-back">Go Back</button>
+            <button type="button" class="conv-next">Foward</button>
         </div>
     </div>
-
-    <div class="conv-questions medium" id="second">
-            <button class="conv-close" data-conv-close="#second">X</button>
-            <div class="question">
-                <label for=""> Hello! I'm the second ?</label>
-                <span class="caption">Don't worry we are not going to enslave you.</span>
-                <input type="text">
-            </div>           
-            <div class="question">
-                <label for=""> Hello! whats your name ?</label>
-                <span class="caption">Don't worry we are not going to enslave you.</span>
-                <input type="text">
-            </div>
-        </div>
-    <script src="src/js/conv.js"></script>
+<br>
+<br>
+<br>
+<div  style="width:400px">
+    
+</div>
+    
+ 
+    <script src="src/js/selectr.min.js"></script>    
+    <script src="src/js/conv.js"></script>   
     <script>
-        conv({ selector: 'conv-questions', BackText : "Go Back", NextText: "Next" });
+        conv({ selector: 'conv-questions', BackText: "Go Back", NextText: "Next" });
+
+        // new Selectr(document.getElementById('State'));
+        
     </script>
 </body>
 
