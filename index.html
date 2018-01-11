@@ -15,8 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="src/css/selectr.min.css">
     <link rel="stylesheet" href="src/css/conv.css">
+    <link rel="stylesheet" href="src/css/test.css">
     <link rel="stylesheet" href="src/css/theme.css">
-    
+
 </head>
 
 <body>
@@ -28,19 +29,56 @@
 
     <button data-conv-target="#second">Open Second Form</button>
 
+    <div class="test">
+        <form class="conv-questions" id="third" action="http://muster.ng" method="get">
+            <div class="question">
+                <label for=""> Hello! I'm the first ?</label>
+                <span class="caption">Don't worry we are not going to enslave you.</span>
+                <input type="text" name="test" data-conv-replace="firstName">
+            </div>
+            <div class="question" data-conv-validate="required">
+                <label for=""> Hey Second <span data-conv-place="firstName"></span> ?</label>
+                <span class="caption">Don't worry we are not going to enslave you.</span>
+                <input type="text" name="test">
 
-    <form class="conv-questions small" id="first" action="http://muster.ng" method="get">
+            </div>
+            <div class="question">
+                <label for=""> Hello! <span  data-conv-place="firstname"></span> Third ?</label>
+                <span class="caption">Don't worry we are not going to enslave you.</span>
+                <div class="conv-radio">
+                    <input type="radio" name="test" id="test1" checked>
+                    <label for="test1">Hello</label>
+                </div>
+                <div class="conv-radio">
+                    <input type="radio" name="test" id="test2">
+                    <label for="test2">Hello</label>
+                </div>
+                <div class="conv-radio">
+                    <input type="radio" name="test" id="test3">
+                    <label for="test3">Hello</label>
+                </div>
+            </div>
+
+            <div class="conv-footer">
+                <button type="button" class="conv-back">Go Back</button>
+                <button type="button" class="conv-next">Foward</button>
+            </div>
+        </form>
+    </div>
+
+
+    <form class="conv-questions popup small" id="first" action="http://muster.ng" method="get">
         <span class="conv-close" data-conv-close="#first">X</span>
         <div class="question">
             <label for=""> Hello! I'm the first ?</label>
             <span class="caption">Don't worry we are not going to enslave you.</span>
-            <input type="text" name="test">
+            <input type="text" name="test" data-conv-replace="firstName">
         </div>
         <div class="question" data-conv-validate="required">
-            <label for=""> Hey Second ?</label>
+            <label for=""> Hey Second <span data-conv-place="firstName"></span> ?</label>
             <span class="caption">Don't worry we are not going to enslave you.</span>
-            <select class="state-with-all" name="State" id="State" required="" multiple>                
-        </select>
+            <input type="text" name="test">
+
         </div>
         <div class="question">
             <label for=""> Hello! <span  data-conv-place="firstname"></span> Third ?</label>
@@ -65,7 +103,7 @@
         </div>
     </form>
 
-    <div class="conv-questions medium" id="second">
+    <div class="conv-questions popup medium" id="second">
         <button class="conv-close" data-conv-close="#second">X</button>
         <div class="question">
             <label for=""> Hello! I'm the second ?</label>
@@ -82,21 +120,25 @@
             <button type="button" class="conv-next">Foward</button>
         </div>
     </div>
-<br>
-<br>
-<br>
-<div  style="width:400px">
-    
-</div>
-    
- 
-    <script src="src/js/selectr.min.js"></script>    
-    <script src="src/js/conv.js"></script>   
+    <br>
+    <br>
+    <br>
+    <div style="width:400px">
+
+    </div>
+
+
+    <script src="src/js/selectr.min.js"></script>
+    <script src="src/js/conv.js"></script>
     <script>
-        conv({ selector: 'conv-questions', BackText: "Go Back", NextText: "Next" });
+        conv({
+            selector: 'conv-questions',
+            BackText: "Go Back",
+            NextText: "Next"
+        });
 
         // new Selectr(document.getElementById('State'));
-        
+
     </script>
 </body>
 

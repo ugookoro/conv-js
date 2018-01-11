@@ -1,9 +1,15 @@
-body{
-    display: block;
-}
+/*normalization of cov questions elements*/
 
 .conv-questions{
-    display: none;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.conv-questions * {
+    box-sizing: inherit;
+}
+
+.conv-questions.popup{
     flex-direction: column;
     justify-content: center;    
     position: fixed;
