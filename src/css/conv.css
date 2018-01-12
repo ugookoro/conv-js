@@ -1,4 +1,4 @@
-/*normalization of cov questions elements*/
+/* cov questions elements main styles */
 
 .conv-questions{
     box-sizing: border-box;
@@ -34,10 +34,11 @@
     border-radius: 100%;
     min-height: 30px;
     min-width: 30px;
-    line-height: 30px;
+    line-height: 27px;
     padding: 0;
     background-color: transparent;
     text-align: center;
+    cursor: pointer;
 }
 
 .conv-questions.small{    
@@ -87,5 +88,22 @@
 .conv-questions .question.active{
     opacity: 1;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
+
+/* default styling for cov-js elements*/
+
+.conv-questions .question .question-label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.conv-questions .question .caption {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.conv-questions .question input {
+    margin-bottom: 5px;
+}
+
