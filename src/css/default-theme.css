@@ -1,0 +1,184 @@
+.conv-questions .question .question-label {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.conv-questions .question .caption {
+    font-size: 14px;
+    display: block;
+    font-weight: 300;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.conv-questions.popup .question .question-label {
+    font-size: 54px;
+    line-height: 54px;
+}
+
+.conv-questions.popup.medium .question .question-label {
+    font-size: 30px;
+    line-height: 1;
+}
+
+.conv-questions.popup.small .question .question-label {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.conv-questions .question select,
+.conv-questions .question input {
+    height: 35px;
+    width: 100%;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.conv-questions .question input[type=checkbox],
+.conv-questions .question input[type=radio] {
+    height: initial;
+    width: initial;
+    font-size: initial;
+    padding: initial;
+    border-radius: initial;
+    border: initial;
+}
+
+.conv-questions .conv-back,
+.conv-questions .conv-next {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+.conv-questions .conv-next {
+    background-color: #000e3e;
+}
+
+.conv-questions .conv-next:hover {
+    background-color: #0f39c9;
+}
+
+.conv-questions .conv-back:hover {
+    background-color: #df0e0e;
+}
+
+.conv-radio {
+    display: inline-flex;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-right: 10px;
+    min-width: 78px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.conv-radio:hover {
+    border: 1px solid #000;
+}
+
+/* .conv-radio input[type=radio]{
+    /* width: 20px;
+    height: 20px;
+    margin: 0px 6px 0px 0px;
+    color: #fff;
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+} */
+
+/* .conv-radio label{
+    display: inline-block;
+    background-color: #fff;
+    color: #000;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    cursor: pointer;
+}
+
+.conv-radio input:checked + label{
+    background-color: #A5DC86;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+} */
+
+.conv-radio [type="radio"]:checked,
+.conv-radio [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+.conv-radio [type="radio"]:checked + label,
+.conv-radio [type="radio"]:not(:checked) + label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+
+.conv-radio [type="radio"]:checked + label:before,
+.conv-radio [type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 3PX;
+    top: 3px;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #ccc;
+}
+
+.conv-radio [type="radio"]:checked + label:after,
+.conv-radio [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 13px;
+    height: 13px;
+    background: #000;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.conv-radio [type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+.conv-radio [type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}

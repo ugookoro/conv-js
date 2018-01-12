@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="src/css/selectr.min.css">
     <link rel="stylesheet" href="src/css/conv.css">
     <link rel="stylesheet" href="src/css/test.css">
-    <link rel="stylesheet" href="src/css/theme.css">
+    <link rel="stylesheet" href="src/css/default-theme.css">
 
 </head>
 
@@ -29,8 +29,10 @@
 
     <button data-conv-target="#second">Open Second Form</button>
 
+    <button data-conv-target="#third">Open Third Form</button>
+
     <div class="test">
-        <form class="conv-questions" id="third" action="http://muster.ng" method="get">
+        <form class="conv-questions" id="fouth" action="http://muster.ng" method="get">
             <div class="question">
                 <label class="question-label" for=""> Hello! I'm the first ?</label>
                 <span class="caption">Don't worry we are not going to enslave you.</span>
@@ -93,18 +95,17 @@
     <form class="conv-questions popup small" id="first" action="http://muster.ng" method="get">
         <span class="conv-close" data-conv-close="#first">X</span>
         <div class="question">
-            <label for=""> Hello! I'm the first ?</label>
+            <label class="question-label" for=""> Hello! I'm the first ?</label>
             <span class="caption">Don't worry we are not going to enslave you.</span>
             <input type="text" name="test" data-conv-replace="firstName">
         </div>
         <div class="question" data-conv-validate="required">
-            <label for=""> Hey Second <span data-conv-place="firstName"></span> ?</label>
+            <label class="question-label" for=""> Hey Second <span data-conv-place="firstName"></span> ?</label>
             <span class="caption">Don't worry we are not going to enslave you.</span>
             <input type="text" name="test">
-
         </div>
         <div class="question">
-            <label for=""> Hello! <span  data-conv-place="firstname"></span> Third ?</label>
+            <label class="question-label" for=""> Hello! <span  data-conv-place="firstname"></span> Third ?</label>
             <span class="caption">Don't worry we are not going to enslave you.</span>
             <div class="conv-radio">
                 <input type="radio" name="test" id="test1" checked>
@@ -129,12 +130,12 @@
     <div class="conv-questions popup medium" id="second">
         <button class="conv-close" data-conv-close="#second">X</button>
         <div class="question">
-            <label for=""> Hello! I'm the second ?</label>
+            <label class="question-label" for=""> Hello! I'm the second ?</label>
             <span class="caption">Don't worry we are not going to enslave you.</span>
             <input type="text">
         </div>
         <div class="question">
-            <label for=""> Hello! whats your name ?</label>
+            <label class="question-label" for=""> Hello! whats your name ?</label>
             <span class="caption">Don't worry we are not going to enslave you.</span>
             <input type="text">
         </div>
@@ -143,6 +144,65 @@
             <button type="button" class="conv-next">Foward</button>
         </div>
     </div>
+
+    <form class="conv-questions popup" id="third" action="http://muster.ng" method="get">
+            <span class="conv-close" data-conv-close="#third">X</span>
+            <div class="question">
+                <label class="question-label" for=""> Hello! I'm the first ?</label>
+                <span class="caption">Don't worry we are not going to enslave you.</span>
+                <input type="text" name="test" data-conv-replace="firstName">
+            </div>
+            <div class="question" data-conv-validate="required">
+                <label class="question-label" for=""> Hey Second <span data-conv-place="firstName"></span> ?</label>
+                <span class="caption">Don't worry we are not going to enslave you.</span>
+                <input type="text" name="test">
+            </div>
+            <div class="question">
+                <label class="question-label" for=""> Hello! <span  data-conv-place="firstname"></span> Third ?</label>
+                <span class="caption">Don't worry we are not going to enslave you.</span>
+                <div class="conv-radio">
+                    <input type="radio" name="test" id="test1" checked>
+                    <label for="test1">Hello</label>
+                </div>
+                <div class="conv-radio">
+                    <input type="radio" name="test" id="test2">
+                    <label for="test2">Hello</label>
+                </div>
+                <div class="conv-radio">
+                    <input type="radio" name="test" id="test3">
+                    <label for="test3">Hello</label>
+                </div>
+            </div>
+            <div class="question" data-conv-validate="required">
+                <label class="question-label" for=""> Hey fourth <span data-conv-place="firstName"></span> ?</label>
+                <span class="caption">Don't worry we are not going to enslave you.</span>
+                <select name="carlist" form="carform">
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="opel">Opel</option>
+                  <option value="audi">Audi</option>
+                </select>
+            </div>
+            <div class="question" data-conv-validate="required">
+                <label class="question-label" for=""> Hey fifth <span data-conv-place="firstName"></span> ?</label>
+                <span class="caption">Don't worry we are not going to enslave you.</span>
+                <input type="radio" name="gender" value="male" checked> Male
+                <input type="radio" name="gender" value="female"> Female
+                <label for=""><input type="radio" name="gender" value="other"> Other</label>
+            </div>
+            <div class="question" data-conv-validate="required">
+                <label class="question-label" for=""> Hey sixth <span data-conv-place="firstName"></span> ?</label>
+                <span class="caption">Don't worry we are not going to enslave you.</span>
+                <input type="checkbox" name="vehicle1" value="Bike"> I have a bike
+                <input type="checkbox" name="vehicle2" value="Car"> I have a car
+                <label for=""><input type="checkbox" name="vehicle2" value="Car"> Other</label>
+            </div>
+
+            <div class="conv-footer">
+                <button type="button" class="conv-back">Go Back</button>
+                <button type="button" class="conv-next">Foward</button>
+            </div>
+        </form>
     <br>
     <br>
     <br>

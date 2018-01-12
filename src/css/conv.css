@@ -23,9 +23,34 @@
     border: 1px solid #eee;
     padding: 0 8%;
 }
-.selectr-options-container{
-    position: static !important;
+
+.conv-questions.popup.medium{
+    top: 20%;
+    bottom: 20%;
+    left: 8%;
+    right: 8%;
 }
+
+.conv-questions.popup.small{
+    top: 20%;
+    bottom: 20%;
+    left: 20%;
+    right: 20%;
+}
+
+.conv-questions .question{
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.conv-questions .question.active{
+    opacity: 1;
+    height: auto;
+    margin-bottom: 5px;
+}
+
 .conv-questions .conv-close{
     position: absolute;
     right: 8px;
@@ -41,32 +66,19 @@
     cursor: pointer;
 }
 
-.conv-questions.small{    
-    top: 20%;
-    bottom: 20%;
-    left: 20%;
-    right: 20%;   
-}
-.conv-questions.medium{
-    top: 20%;
-    bottom: 20%;
-    left: 8%;
-    right: 8%;
+.selectr-options-container{
+    position: static !important;
 }
 
-.conv-questions .question{
-    transition: opacity 1s ease-out;
-    opacity: 0; 
-    height: 0;
-    overflow: hidden;
-}
 .selectr-selected .selectr-tag-remove {
     right: 2px;
 }
+
 .selectr-selected{
        min-height: 41px;
     font-size: 1.2rem;
 }
+
 .selectr-tag {
     position: relative;
     float: left;
@@ -85,11 +97,6 @@
 /* .conv-questions .conv-footer{    
 } */
 
-.conv-questions .question.active{
-    opacity: 1;
-    height: auto;
-    margin-bottom: 10px;
-}
 
 /* default styling for cov-js elements*/
 
