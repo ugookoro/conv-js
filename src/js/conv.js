@@ -88,6 +88,14 @@ function conv(params) {
             var nextStep = Number(currentActiveStep) + 1;
             var nextQuestion = questionContainer.querySelectorAll('[data-step="'+nextStep+'"]')[0];
 
+            //Turn last button into submit button
+            if (nextStep === questionContainer.getElementsByClassName('question').length - 1) {
+                var finishButton = questionContainer.querySelectorAll('.conv-next')[0];
+                finishButton.setAttribute('type', 'submit');
+                evt.preventDefault()
+            }
+
+
             //if current active question is required, 
             var questionHasValidation = currentActiveQuestion.hasAttribute('data-conv-validate');
             if (questionHasValidation) {
