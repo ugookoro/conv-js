@@ -83,6 +83,51 @@
     background-color: #df0e0e;
 }
 
+.conv-numeric{
+       display: inline-block;
+    border-top: 1px solid #eee;
+    border-radius: 9px;
+    border-bottom: 1px solid #eee;
+}
+
+.conv-numeric button.increase , .conv-numeric button.decrease {
+    width: 35px;
+    height: 35px;
+    background-color: #D5CDFC;
+    border: 1px solid #D5CDFC;
+    color:#fff;
+    outline: none;
+}
+
+.conv-numeric button.increase{
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+.conv-numeric button.increase:focus, .conv-numeric button.decrease:focus{
+    background:#000e3e;
+}
+
+.conv-numeric button.decrease{
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 9px;
+}
+
+.conv-numeric input[type=number]::-webkit-inner-spin-button,
+.conv-numeric input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance: none;   
+    -moz-appearance: none;     
+}
+.conv-numeric input[type=number]{
+        width: 90px;
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: 34px;
+    outline: none;
+    text-align: center;
+}
+
+
 .conv-radio {
     display: inline-flex;
     padding: 8px 12px;
@@ -132,6 +177,10 @@
 .conv-radio [type="radio"]:not(:checked) {
     position: absolute;
     left: -9999px;
+}
+
+.conv-radio label{
+    margin-bottom: 0px;
 }
 
 .conv-radio [type="radio"]:checked + label,

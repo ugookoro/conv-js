@@ -3,14 +3,14 @@ function conv(params) {
 
     (function getQuestions(doc) {
         var questionContainers = doc.getElementsByClassName(params.selector);
-        console.log("Containers", "There are " + questionContainers.length + " containers");
-        console.log("Containers", questionContainers);
+        // console.log("Containers", "There are " + questionContainers.length + " containers");
+        // console.log("Containers", questionContainers);
 
         for (i = 0; i < questionContainers.length; i++) {
             questions = questionContainers[i].getElementsByClassName('question');                      
             if (questions.length !== 0) {
                 var count = 0;
-                console.log("Question", "There are " + questions.length + " questions");
+               // console.log("Question", "There are " + questions.length + " questions");
                 for (j = 0; j < questions.length; j++) {
                     var att = doc.createAttribute("data-step");       // Create a "class" attribute
                     att.value = count;                           // Set the value of the class attribute
@@ -19,54 +19,56 @@ function conv(params) {
                     if (j === 0) {
                         questions[j].classList.add('active');
                     }   
-                    
-                    //var dropdowns = questions[j].getElementsByTagName('select');
-
-                    //for (var k = 0; k < dropdowns.length; k++) {                        
-                    //    var element = dropdowns[k];
-                    //    const sle = new Selectr(element);
-                    //}
-                    //     var displayDiv = doc.createElement('div');
-                    //     var selectionDiv = doc.createElement('div');                        
-                    //     var searchInput = doc.createElement('input');
-                    //     searchInput.setAttribute('type', 'text');
-                    //     const values = [];
-                    //     var itemList = doc.createElement('ul');
-                    //     var options = element.options;
-                    //     for (var l = 0; l < options.length; l++) {
-                    //         var listItem = doc.createElement('li');                                           
-                    //         var value = options[l].value;
-                    //         var text = options[l].innerText;                            
-                    //         values.push(text);
-                    //         listItem.setAttribute('data-conv-value', value);
-                    //         listItem.setAttribute('data-conv-text', text);
-                    //         listItem.innerText = text;
-                    //         itemList.appendChild(listItem);                
-                    //     }
-
-                    //     console.log(values);
-
-                    //     searchInput.addEventListener('keyup',function(e){
-                    //         var target = e.currentTarget;
-                    //         var searhText = target.value;
-                    //         console.log('Search', searhText);
-                            
-                    //     });
-                    //     selectionDiv.appendChild(searchInput);
-                    //     selectionDiv.appendChild(itemList);
-                    //     element.insertAdjacentElement('afterend',selectionDiv);
-                    //     element.insertAdjacentElement('afterend',displayDiv);
-                        
-                    // }
                 }   
             } else {
             }
 
-            console.log(questions);
+            //console.log(questions);
             
         }
 
+        var numericControls = doc.querySelectorAll('.conv-numeric');
+        if (numericControls) {            
+            for (var i = 0; i < numericControls.length; i++) {
+                var control = numericControls[i];
+                var input = control.querySelectorAll('input[type="number"]')[0],
+                    btnIncrease = control.querySelectorAll('button.increase')[0],
+                    btnDecrease = control.querySelectorAll('button.decrease')[0];
+
+                control.setAttribute('id', 'conv-numeric-' + i);
+                input.setAttribute('id', 'conv-input-' + i);
+                btnIncrease.setAttribute('id', 'conv-inc-' + i);
+                btnDecrease.setAttribute('id', 'conv-dec-' + i);
+
+                if (btnIncrease) {
+                    btnIncrease.addEventListener('click', function () {
+                        var oldValue = input.value === "" ? 0 : parseFloat(input.value);
+                        var newVal = oldValue + 1;
+                        input.value = newVal;
+                        var event = document.createEvent("Event");
+                        event.initEvent("change", false, true);
+                        input.dispatchEvent(event);
+                    })
+                }
+
+                if (btnDecrease) {
+                    btnDecrease.addEventListener('click', function () {
+                        var oldValue = input.value === "" ? 0 : parseFloat(input.value);
+                        var newVal = oldValue - 1;
+                        input.value = newVal;
+                        var event = document.createEvent("Event");
+                        event.initEvent("change", false, true);
+                        input.dispatchEvent(event);
+                    })
+                }
+                
+
+                
+            }
+        }       
     })(document);
+
+   
 
 
     //Form opener trigger
@@ -79,72 +81,84 @@ function conv(params) {
         if (element.hasAttribute('data-conv-close')) {
             var target = element.getAttribute('data-conv-close');
             document.querySelector(target).style.display = 'none';
-        }   
+        }      
         
         if(element.classList.contains('conv-next')){
             var questionContainer = element.parentElement.parentElement;
             var currentActiveQuestion = questionContainer.querySelectorAll('.active')[0];
             var currentActiveStep = currentActiveQuestion.getAttribute('data-step');
             var nextStep = Number(currentActiveStep) + 1;
-            var nextQuestion = questionContainer.querySelectorAll('[data-step="'+nextStep+'"]')[0];
+            var nextQuestion = questionContainer.querySelectorAll('[data-step="' + nextStep + '"]')[0];
 
-            //Turn last button into submit button
             if (nextStep === questionContainer.getElementsByClassName('question').length - 1) {
                 var finishButton = questionContainer.querySelectorAll('.conv-next')[0];
                 finishButton.setAttribute('type', 'submit');
                 evt.preventDefault()
             }
 
-
             //if current active question is required, 
             var questionHasValidation = currentActiveQuestion.hasAttribute('data-conv-validate');
             if (questionHasValidation) {
                 var questionIsValid = validate(currentActiveQuestion.getAttribute('data-conv-validate'), currentActiveQuestion)
                 if (questionIsValid) {
+                    if (nextStep + 1 === questionContainer.getElementsByClassName('question').length) {
+                        var finishButton = questionContainer.querySelectorAll('.conv-next')[0];
+                        finishButton.setAttribute('type', 'submit');
+                    }
                     if (nextQuestion) {
                         replace(questionContainer,currentActiveQuestion);
                         currentActiveQuestion.classList.remove('active');
                         nextQuestion.classList.add('active');                
-                    } else {
-        
-                        var containerType = questionContainer.tagName;
-                        switch (containerType.toLowerCase()) {
-                            case "form":
-                            questionContainer.submit();                                                                
-                                break;                
-                            default:
-                            var url = questionContainer.getAttribute('data-url');
+                    } else {        
+                        //var containerType = questionContainer.tagName;
+                        //switch (containerType.toLowerCase()) {
+                        //    case "form":
+                        //    questionContainer.submit();                                                                
+                        //        break;                
+                        //    default:
+                        //    var url = questionContainer.getAttribute('data-url');
                             
-                                break;
-                        }
-                        console.log("Container type",containerType);
+                        //        break;
+                        //}
+                        //console.log("Container type",containerType);
         
-                        //submit the form because there's no next
+                        ////submit the form because there's no next
                     }   
                 }else{
                     console.log('Question is InValid');
                 }
-            }else{
+            } else {
+               
                 if (nextQuestion) {
                     replace(questionContainer,currentActiveQuestion);                    
                     currentActiveQuestion.classList.remove('active');
-                    nextQuestion.classList.add('active');                
+                    nextQuestion.classList.add('active');
+                    
                 } else {
+                    
     
-                    var containerType = questionContainer.tagName;
-                    switch (containerType.toLowerCase()) {
-                        case "form":
-                        questionContainer.submit();                                                                
-                            break;                
-                        default:
-                        var url = questionContainer.getAttribute('data-url');
+                    //var containerType = questionContainer.tagName;
+                    //switch (containerType.toLowerCase()) {
+                    //    case "form":
+                    //    questionContainer.submit();                                                                
+                    //        break;                
+                    //    default:
+                    //    var url = questionContainer.getAttribute('data-url');
                         
-                            break;
-                    }
-                    console.log("Container type",containerType);
+                    //        break;
+                    //}
+                    //console.log("Container type",containerType);
     
                     //submit the form because there's no next
                 }  
+            }
+
+
+            //look for callbacks
+            var questionHasCallback = currentActiveQuestion.hasAttribute('data-conv-onanswered');
+            if (questionHasCallback) {
+                var callBackName = currentActiveQuestion.getAttribute('data-conv-onanswered');
+                window[callBackName]();
             }
             
            
@@ -156,6 +170,12 @@ function conv(params) {
             var currentActiveStep = currentActiveQuestion.getAttribute('data-step');
             var nextStep = Number(currentActiveStep) - 1;
             var nextQuestion = questionContainer.querySelectorAll('[data-step="'+nextStep+'"]')[0];
+
+            if (nextStep === questionContainer.getElementsByClassName('question').length - 1) {
+                var finishButton = questionContainer.querySelectorAll('.conv-next')[0];
+                finishButton.setAttribute('type', 'button');
+                evt.preventDefault()
+            }
             if (nextQuestion) {
                 currentActiveQuestion.classList.remove('active');
                 nextQuestion.classList.add('active');                
@@ -173,7 +193,7 @@ function conv(params) {
                 var questionInput = question.querySelectorAll('input')[0] !== undefined ? question.querySelectorAll('input')[0] : question.querySelectorAll('select')[0];
                 if(questionInput.value !== undefined && questionInput.value !== null && questionInput.value !== ""){
                     result = true;
-                }
+                }               
                 break;
         
             default:
@@ -193,7 +213,7 @@ function conv(params) {
             var placeHolders = questionContainer.querySelectorAll('[data-conv-place]');
             for (i = 0; i < placeHolders.length; i++) {                
                 var element = placeHolders[i];
-                console.log('element', element);
+               // console.log('element', element);
                 if (element.getAttribute('data-conv-place') === textToReplace) {
                     var str = element.innerText || element.textContent;
                     element.innerText =  replacementText;
@@ -201,19 +221,9 @@ function conv(params) {
                 }else{
 
                 }                        
-            }
-            // var containerText = questionContainer.innerText;
-
-            // // containerText = containerText.replace('{{'+textToReplace+'}}', replacementText);
-
-            // // questionContainer.innerHTML = containerText;
-            // console.log(containerText);            
-
-            console.log('elementWithReplaceAttribute', elementWithReplaceAttribute);
-            console.log('textToReplace', textToReplace);
-            console.log('replacementText', replacementText);   
+            }           
         }  else{
-            console.log('Nothing to replace');
+            //console.log('Nothing to replace');
         }              
     }
 

@@ -43,7 +43,7 @@
                 <span class="caption">Don't worry we are not going to enslave you.</span>
                 <input type="text" name="test">
             </div>
-            <div class="question">
+            <div class="question"  data-conv-onanswered="DoSomething">
                 <label class="question-label" for=""> Hello! <span  data-conv-place="firstname"></span> Third ?</label>
                 <span class="caption">Don't worry we are not going to enslave you.</span>
                 <div class="conv-radio">
@@ -92,7 +92,7 @@
     </div>
 
 
-    <form class="conv-questions popup small" id="first" action="http://muster.ng" method="get">
+    <form class="conv-questions popup small" id="first" action="" method="get">
         <span class="conv-close" data-conv-close="#first">X</span>
         <div class="question">
             <label class="question-label" for=""> Hello! I'm the first ?</label>
@@ -219,6 +219,10 @@
             BackText: "Go Back",
             NextText: "Next"
         });
+
+        var DoSomething = function () { 
+            alert("Hello World");
+         }
 
         // new Selectr(document.getElementById('State'));
 
